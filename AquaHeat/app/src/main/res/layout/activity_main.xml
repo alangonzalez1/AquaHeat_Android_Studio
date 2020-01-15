@@ -7,7 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!"Current Temperature">
     <TextView
         android:id="@+id/tempText"
         android:layout_width="match_parent"
@@ -20,9 +19,6 @@
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="40dp" />
 
-    <<![CDATA[!The text that will display the units>
-
-    ]]>
 
     <TextView
         android:id="@+id/tempUnits"
@@ -39,14 +35,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.168" />
 
-    <!The text that shows the current temperature to be update to be a variable>
     <TextView
         android:id="@+id/currentTemp"
         android:layout_width="129dp"
         android:layout_height="89dp"
         android:layout_marginStart="64dp"
         android:gravity="right"
-        android:text="10"
+        android:text="0"
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/tempUnits"
@@ -69,6 +64,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tempText"
         app:layout_constraintVertical_bias="0.198" />
+
 
     <Button
         android:id="@+id/setButton"
