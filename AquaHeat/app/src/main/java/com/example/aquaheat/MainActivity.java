@@ -1,5 +1,6 @@
 package com.example.aquaheat;
 
+import androidx.core.app.NotificationCompat;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
+import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.app.Notification;
+import android.app.NotificationManager;
 
 import java.util.Random;
 
@@ -44,15 +47,33 @@ public class MainActivity extends AppCompatActivity {
         syncTempBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // program the button to do something here
-                float x = (float) randGenerate(); // generate random number between 0 and 20
+                // program the sync button to do something here
+                float x = (float) randGenerate(); // generate random number between 0 and 30
                 currentTemp.setText(Float.toString(x));
+                notificationCall(x, SettingsActivity2.lowerBoundInt, SettingsActivity2.upperBoundInt);
 
             }
 
         });
     }
 
+    public void notificationCall(float value, int lowerBound, int upperBound) {
+        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this);
+        notificationBuilder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        notificationBuilder.setSmallIcon(R.drawable.ic_warning);
+        notificationBuilder.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_warning));
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (value <= (float)lowerBound) {
+            notificationBuilder.setContentTitle("Notification from AquaHeat");
+            notificationBuilder.setContentText("The temperature of your fish tank is too low!");
+            notificationManager.notify(1, notificationBuilder.build());
+        }
+        if (value >= (float)upperBound) {
+            notificationBuilder.setContentTitle("Notification from AquaHeat");
+            notificationBuilder.setContentText("The temperature of your fish tank is too high!");
+            notificationManager.notify(1, notificationBuilder.build());
+        }
+    }
 
     public void openSettings() {
         Intent intent = new Intent(this, SettingsActivity2.class);
@@ -62,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public int randGenerate() {
         Random rand = new Random();
         int result;
-        result = rand.nextInt(20);
+        result = rand.nextInt(30);
 
         return result;
     }
