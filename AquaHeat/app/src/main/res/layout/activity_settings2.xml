@@ -8,6 +8,18 @@
     tools:context=".SettingsActivity2">
 
         <TextView
+            android:id="@+id/tmpUnitsTxt"
+            android:layout_width="151dp"
+            android:layout_height="29dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="24dp"
+            android:text="Temperature Units"
+            android:textColor="#216EF3"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/uBndTxt" />
+
+        <TextView
             android:id="@+id/tmpSetTxt"
             android:layout_width="151dp"
             android:layout_height="29dp"
@@ -78,6 +90,17 @@
             app:layout_constraintStart_toEndOf="@+id/uBndTxt"
             app:layout_constraintTop_toBottomOf="@+id/lBndInput" />
 
+        <TextView
+            android:id="@+id/changeToCTxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginStart="24dp"
+            android:text="Change to Celsius"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tmpUnitsTxt" />
+
         <Button
             android:id="@+id/applyBtn"
             android:layout_width="wrap_content"
@@ -91,4 +114,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.932" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <Switch
+            android:id="@+id/Celsius"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="156dp"
+            android:layout_marginTop="68dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/changeToCTxt"
+            app:layout_constraintTop_toBottomOf="@+id/uBndInput" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
